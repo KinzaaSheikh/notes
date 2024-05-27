@@ -1,7 +1,7 @@
 import { default as express } from "express";
 import { default as hbs } from "hbs";
 import * as path from 'path';
-// import * as favucon from 'serve-favicon'
+// import * as favicon from 'serve-favicon'
 import { default as logger } from "morgan";
 import { default as cookieParser } from "cookie-parser";
 import { default as bodyParser } from "body-parser";
@@ -24,7 +24,7 @@ export const NotesStore = new InMemoryNotesStore()
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
-hbs.registerPartials(path.join(__dirname, 'partials'))
+hbs.registerPartials(path.join(__dirname, 'views/partial'))
 
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
