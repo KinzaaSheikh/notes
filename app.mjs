@@ -7,6 +7,7 @@ import { default as cookieParser } from "cookie-parser";
 import { default as bodyParser } from "body-parser";
 import * as http from 'http'
 import { approotdir } from './approotdir.mjs'
+import { InMemoryNotesStore } from "./models/notes-memory.mjs";
 
 
 const __dirname = approotdir
@@ -17,6 +18,8 @@ import { router as indexRouter } from "./routes/index.mjs";
 // import { router as notesRouter } from "./routes/notes.mjs";
 
 export const app = express()
+
+export const NotesStore = new InMemoryNotesStore()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -43,7 +46,7 @@ app.use(basicErrorHandler)
 export const port = normalizePort(process.env.PORT || '3000')
 app.set('port', port)
 
-export const sort = http.createServer(app)
+export const server = http.createServer(app)
 
 server.listen(port)
 server.on('error', onError)

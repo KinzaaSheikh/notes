@@ -38,7 +38,7 @@ export function onListening() {
     const addr = server.address()
     const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
 
-    console.log(`Listening on ${bind}`)
+    console.log(`Listening on ${bind}`) 
 }
 
 export function handle404 (req, res, next) {
@@ -54,6 +54,6 @@ export function basicErrorHandler(err, req, res, next) {
 
     res.locals.message = err.message
     res.locals.error = req.app.get('env') === 'development' ? err : {}
-    res.status(err,status || 500)
+    res.status(err.status || 500)
     res.render('error')
 }
